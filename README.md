@@ -29,13 +29,16 @@ $ npm start
 ```
 $ npm run test:e2e
 ```
-## Swagger docs:
-
-```sh
-http://localhost:8080/api/v1/docs
-```
 ## Run in docker:
 
 ```sh
 docker-compose up --build
 ```
+## Swagger docs:
+
+```sh
+http://localhost:8080/api/v1/docs
+```
+
+![image](https://user-images.githubusercontent.com/20913597/139333452-055932f4-34d8-473c-afe1-ad95dca19979.png)
+
