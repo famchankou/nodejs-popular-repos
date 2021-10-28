@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger GitHub repositories search"
+  },
+  "host": "0.0.0.0:8080",
+  "basePath": "",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/repos/search": {
+      "get": {
+        "summary": "Get existing repositories by search params",
+        "operationId": "search",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number (default is 1)",
+            "type": "number"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Items count per page (default is 10)",
+            "type": "number"
+          },
+          {
+            "name": "created",
+            "in": "query",
+            "required": false,
+            "description": "Date of creation in the following format yyyy-MM-dd. In case of invalid date or no date, the default start date is back 20 years from now.",
+            "type": "string"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "description": "Programming language for which to search repositories",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing repositories",
+            "schema": {
+              "$ref": "#/definitions/Repository"
+            }
+          },
+          "404": {
+            "description": "Repository not found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/api/v1/repos/language/{language}/top/{per_page}": {
+      "get": {
+        "summary": "Get existing repositories by search params",
+        "operationId": "search",
+        "parameters": [
+          {
+            "name": "per_page",
+            "in": "path",
+            "required": true,
+            "description": "Items count per page",
+            "type": "number"
+          },
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "description": "Programming language for which to search repositories",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing repositories",
+            "schema": {
+              "$ref": "#/definitions/Repository"
+            }
+          },
+          "404": {
+            "description": "Repository not found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Repository": {
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "private": {
+          "type": "boolean"
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "id": {
+              "type": "number"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            }
+          }
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fork": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string"
+        },
+        "forks_url": {
+          "type": "string"
+        },
+        "keys_url": {
+          "type": "string"
+        },
+        "collaborators_url": {
+          "type": "string"
+        },
+        "teams_url": {
+          "type": "string"
+        },
+        "hooks_url": {
+          "type": "string"
+        },
+        "issue_events_url": {
+          "type": "string"
+        },
+        "events_url": {
+          "type": "string"
+        },
+        "assignees_url": {
+          "type": "string"
+        },
+        "branches_url": {
+          "type": "string"
+        },
+        "tags_url": {
+          "type": "string"
+        },
+        "blobs_url": {
+          "type": "string"
+        },
+        "git_tags_url": {
+          "type": "string"
+        },
+        "git_refs_url": {
+          "type": "string"
+        },
+        "trees_url": {
+          "type": "string"
+        },
+        "statuses_url": {
+          "type": "string"
+        },
+        "languages_url": {
+          "type": "string"
+        },
+        "stargazers_url": {
+          "type": "string"
+        },
+        "contributors_url": {
+          "type": "string"
+        },
+        "subscribers_url": {
+          "type": "string"
+        },
+        "subscription_url": {
+          "type": "string"
+        },
+        "commits_url": {
+          "type": "string"
+        },
+        "git_commits_url": {
+          "type": "string"
+        },
+        "comments_url": {
+          "type": "string"
+        },
+        "issue_comment_url": {
+          "type": "string"
+        },
+        "contents_url": {
+          "type": "string"
+        },
+        "compare_url": {
+          "type": "string"
+        },
+        "merges_url": {
+          "type": "string"
+        },
+        "archive_url": {
+          "type": "string"
+        },
+        "downloads_url": {
+          "type": "string"
+        },
+        "issues_url": {
+          "type": "string"
+        },
+        "pulls_url": {
+          "type": "string"
+        },
+        "milestones_url": {
+          "type": "string"
+        },
+        "notifications_url": {
+          "type": "string"
+        },
+        "labels_url": {
+          "type": "string"
+        },
+        "releases_url": {
+          "type": "string"
+        },
+        "deployments_url": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "pushed_at": {
+          "type": "string"
+        },
+        "git_url": {
+          "type": "string"
+        },
+        "ssh_url": {
+          "type": "string"
+        },
+        "clone_url": {
+          "type": "string"
+        },
+        "svn_url": {
+          "type": "string"
+        },
+        "homepage": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        },
+        "stargazers_count": {
+          "type": "number"
+        },
+        "watchers_count": {
+          "type": "number"
+        },
+        "language": {
+          "type": "string"
+        },
+        "has_issues": {
+          "type": "boolean"
+        },
+        "has_projects": {
+          "type": "boolean"
+        },
+        "has_downloads": {
+          "type": "boolean"
+        },
+        "has_wiki": {
+          "type": "boolean"
+        },
+        "has_pages": {
+          "type": "boolean"
+        },
+        "forks_count": {
+          "type": "number"
+        },
+        "mirror_url": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "open_issues_count": {
+          "type": "number"
+        },
+        "license": {
+          "type": "string"
+        },
+        "allow_forking": {
+          "type": "boolean"
+        },
+        "is_template": {
+          "type": "boolean"
+        },
+        "topics": {
+          "type": "array"
+        },
+        "visibility": {
+          "type": "string"
+        },
+        "forks": {
+          "type": "number"
+        },
+        "open_issues": {
+          "type": "number"
+        },
+        "watchers": {
+          "type": "number"
+        },
+        "default_branch": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
