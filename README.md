@@ -34,3 +34,8 @@ $ npm run test:e2e
 ```sh
 http://localhost:8080/api/v1/docs
 ```
+## Run in docker:
+
+```sh
+docker-compose up --build
+```
